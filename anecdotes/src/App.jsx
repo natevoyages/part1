@@ -2,6 +2,7 @@ import { useState } from 'react'
 const Button = ({onClick,text}) => {
   return (<button onClick={onClick}>{text}</button>)
   }
+const Header = ({text}) => <h2>{text}</h2>
 
 const App = () => {
   const anecdotes = [
@@ -22,23 +23,35 @@ const App = () => {
   while (randomNum === selected){
     randomNum = randomGenerator()
   }
-  const copy = [...votes]  
+  const copy = [...votes] 
+
   const vote = () => {
   copy[selected] += 1
   setVotes(copy);
    }
-  console.log(randomNum)
-  console.log(selected)
+
   const randomQuote = () => { setSelected(randomNum)}
+  
+  const getTopVoted = () => {
+    const max = Math.max(...copy)
+    const topVoted = copy.indexOf(max)
+    return topVoted
+  }
+  const topVoted = getTopVoted()
 
   return (
     <div>
+      <Header text = "Anecdote of the day"/>
       {anecdotes[selected]}
       <p>has {votes[selected]} vote(s)</p> 
       <div>
         <Button onClick = {vote} text = "Vote"/>
         <Button onClick = {randomQuote} text = "Next Anectdote"/>
       </div>
+      <Header text = "Anecdote with most votes"/>
+      {anecdotes[topVoted]}
+      <p>has {votes[topVoted]} vote(s)</p> 
+
     </div>
   )
 }
