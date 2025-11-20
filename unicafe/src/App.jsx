@@ -6,6 +6,7 @@ const Button = ({onClick,text}) => <button onClick ={onClick}> {text}</button>
 const Feedback =  ({good, neutral, bad}) => {
   const total = good + neutral + bad;
   const average = ( (good * 1) + (neutral * 0) + (bad * -1) ) / total
+  const positivePercent = good / total
 
   if(total === 0){
   return (
@@ -18,7 +19,7 @@ const Feedback =  ({good, neutral, bad}) => {
     <p>Bad {bad}</p>
     <p>Total {total}</p>
     <p>Average 0</p>
-    <p>positive 0</p>
+    <p>positive 0%</p>
     </div>
       ) 
   }
@@ -32,7 +33,7 @@ const Feedback =  ({good, neutral, bad}) => {
     <p>Bad {bad}</p>
     <p>Total {total}</p>
     <p>Average {average}</p>
-    <p>positive</p>
+    <p>positive {positivePercent}%</p>
     </div>
       ) 
 }
