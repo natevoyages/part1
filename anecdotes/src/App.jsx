@@ -3,7 +3,6 @@ const Button = ({onClick,text}) => {
   return (<button onClick={onClick}>{text}</button>)
   }
 
-
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often.',
@@ -17,10 +16,17 @@ const App = () => {
   ]
   
   const [selected, setSelected] = useState(0)
-  let randomNum = Math.floor(Math.random() * 8)
+  const [votes, setVotes] = useState([0, 0, 0, 0, 0, 0, 0, 0])
+  const randomGenerator = () => Math.floor(Math.random() * anecdotes.length)
+  let randomNum = randomGenerator()
   while (randomNum === selected){
-    randomNum = Math.floor(Math.random() * 8)
+    randomNum = randomGenerator()
   }
+  const copy = [...votes]  
+  const vote = () => {
+  copy[selected] += 1
+  setVotes(copy);
+   }
   console.log(randomNum)
   console.log(selected)
   const randomQuote = () => { setSelected(randomNum)}
@@ -28,11 +34,11 @@ const App = () => {
   return (
     <div>
       {anecdotes[selected]}
-
-        <div>
-          <Button onClick = {randomQuote} text = "Vote"/>
-          <Button onClick = {vote} text = "Next Anectdote"/>
-        </div>
+      <p>has {votes[selected]} vote(s)</p> 
+      <div>
+        <Button onClick = {vote} text = "Vote"/>
+        <Button onClick = {randomQuote} text = "Next Anectdote"/>
+      </div>
     </div>
   )
 }
