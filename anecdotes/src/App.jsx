@@ -1,10 +1,7 @@
 import { useState } from 'react'
 const Button = ({onClick,text}) => {
-  return (
-    <div>
-      <button onClick={onClick}>{text}</button>
-    </div>)
-}
+  return (<button onClick={onClick}>{text}</button>)
+  }
 
 
 const App = () => {
@@ -18,7 +15,7 @@ const App = () => {
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.',
     'The only way to go fast, is to go well.'
   ]
-   
+  
   const [selected, setSelected] = useState(0)
   let randomNum = Math.floor(Math.random() * 8)
   while (randomNum === selected){
@@ -31,7 +28,11 @@ const App = () => {
   return (
     <div>
       {anecdotes[selected]}
-      <Button onClick = {randomQuote} text = "Next Anectdote"/>
+
+        <div>
+          <Button onClick = {randomQuote} text = "Vote"/>
+          <Button onClick = {vote} text = "Next Anectdote"/>
+        </div>
     </div>
   )
 }
