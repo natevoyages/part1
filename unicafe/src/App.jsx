@@ -14,12 +14,7 @@ const Statistics =  ({good, neutral, bad}) => {
     <h2>
       Statistics
     </h2>
-    <p>Good {good}</p>
-    <p>Neutral {neutral}</p>
-    <p>Bad {bad}</p>
-    <p>Total {total}</p>
-    <p>Average 0</p>
-    <p>positive 0%</p>
+    <p>No feedback given</p>
     </div>
       ) 
   }
