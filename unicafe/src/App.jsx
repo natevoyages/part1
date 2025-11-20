@@ -5,8 +5,9 @@ const Button = ({onClick,text}) => <button onClick ={onClick}> {text}</button>
 
 const Feedback =  ({good, neutral, bad}) => {
   const total = good + neutral + bad;
+  const average = ( (good * 1) + (neutral * 0) + (bad * -1) ) / total
 
-
+  if(total === 0){
   return (
   <div>
     <h2>
@@ -16,7 +17,21 @@ const Feedback =  ({good, neutral, bad}) => {
     <p>Neutral {neutral}</p>
     <p>Bad {bad}</p>
     <p>Total {total}</p>
-    <p>Average</p>
+    <p>Average 0</p>
+    <p>positive 0</p>
+    </div>
+      ) 
+  }
+    return (
+  <div>
+    <h2>
+      Statistics
+    </h2>
+    <p>Good {good}</p>
+    <p>Neutral {neutral}</p>
+    <p>Bad {bad}</p>
+    <p>Total {total}</p>
+    <p>Average {average}</p>
     <p>positive</p>
     </div>
       ) 
