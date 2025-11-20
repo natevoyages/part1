@@ -4,6 +4,9 @@ const Head = ({text}) => <h1>{text}</h1>
 const Button = ({onClick,text}) => <button onClick ={onClick}> {text}</button>
 
 const Feedback =  ({good, neutral, bad}) => {
+  const total = good + neutral + bad;
+
+
   return (
   <div>
     <h2>
@@ -12,6 +15,9 @@ const Feedback =  ({good, neutral, bad}) => {
     <p>Good {good}</p>
     <p>Neutral {neutral}</p>
     <p>Bad {bad}</p>
+    <p>Total {total}</p>
+    <p>Average</p>
+    <p>positive</p>
     </div>
       ) 
 }
